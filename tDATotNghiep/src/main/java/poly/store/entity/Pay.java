@@ -29,9 +29,9 @@ public class Pay implements Serializable {
 	Integer id;
 	
 	String PayType;
-	@JsonIgnore
 	
-	@ManyToOne(mappedBy = "pay")
+	@JsonIgnore
+	@OneToMany(mappedBy = "payid")
 	List<Order> orders;
 
 	

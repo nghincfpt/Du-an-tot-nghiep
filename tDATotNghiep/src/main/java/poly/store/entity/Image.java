@@ -34,10 +34,10 @@ public class Image implements Serializable{
 	Double type;
 	
 	@JsonIgnore
-	@ManyToMany(mappedBy = "Image")
+	@OneToMany(mappedBy = "image")
 	List<ProductVarian> productVariants;
 	
 	@JsonIgnore
-	@ManyToMany(mappedBy = "images")
+	@OneToMany(mappedBy = "images")
 	List<Product> products;	
 }

@@ -28,16 +28,16 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	@OneToMany
-	@JoinColumn(name = "payid")
-	Integer pay;
+	@ManyToOne
+	@JoinColumn(name = "pay")
+	Pay payid;
 	
 	@ManyToOne
 	@JoinColumn(name = "Username")
-	String username;
+	Account account;
 	@ManyToOne
-	@JoinColumn(name = "shippingAddressid")
-	Integer shippingAddressid;
+	@JoinColumn(name = "ShippingAddressID")
+	ShippingAddress shippingAddress;
 	String grandtotal;
 	String status;
 	@Temporal(TemporalType.DATE)

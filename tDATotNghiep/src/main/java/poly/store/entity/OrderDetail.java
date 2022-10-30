@@ -21,11 +21,12 @@ public class OrderDetail implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	@ManyToOne @JoinColumn(name = "orderid")
-	Integer orderid;
+	@ManyToOne 
+	@JoinColumn(name = "OrderID")
+	Order order;
 	
-	@ManyToOne @JoinColumn(name = "productVariantid")
-	Integer productVariantid;
+	@ManyToOne @JoinColumn(name = "ProductVariantID")
+	ProductVarian productVariant;
 
 	Boolean discount;
 	Float price;
@@ -35,8 +36,6 @@ public class OrderDetail implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Productid")
 	Product product;
-	@ManyToOne
-	@JoinColumn(name = "Orderid")
-	Order order;
+	
 
 }

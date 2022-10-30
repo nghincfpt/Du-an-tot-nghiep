@@ -30,7 +30,9 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String name;
-	String image;
+	@ManyToOne
+	@JoinColumn(name = "Image")
+	Image images;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Createdate")
@@ -39,7 +41,5 @@ public class Product implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Categoryid")
 	Category category;
-	@JsonIgnore
-	@ManyToMany(mappedBy = "product")
-	List<Image> images;	
+
 }

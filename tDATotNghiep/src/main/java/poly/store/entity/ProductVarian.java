@@ -29,9 +29,9 @@ public class ProductVarian implements Serializable {
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	@ManyToMany
-	@JoinColumn(name = "imageID")
-	String imageID;
+	@ManyToOne
+	@JoinColumn(name = "ImageID")
+	Image image;
 	Integer quantity;
 	Float price;
 	Boolean discount;
@@ -53,7 +53,7 @@ public class ProductVarian implements Serializable {
 	String battery;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "ProductVariants")
+	@OneToMany(mappedBy = "productVariant")
 	List<OrderDetail> orderDetails;
 	
 
