@@ -31,7 +31,7 @@ public class Product implements Serializable{
 	Integer id;
 	String name;
 	@ManyToOne
-	@JoinColumn(name = "Image")
+	@JoinColumn(name = "ImageID")
 	Image images;
 	
 	@Temporal(TemporalType.DATE)

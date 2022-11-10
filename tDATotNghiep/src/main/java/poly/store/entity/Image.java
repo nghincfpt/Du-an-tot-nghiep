@@ -30,8 +30,7 @@ public class Image implements Serializable{
 	String id;
 	String name;
 	String size;
-	String image;
-	Double type;
+	String type;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "image")
@@ -39,5 +38,5 @@ public class Image implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "images")
-	List<Product> products;	
+	List<Product> product;	
 }
