@@ -29,7 +29,7 @@ public class ProductVarian implements Serializable {
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-
+	String Image;
 	Integer quantity;
 	Float price;
 	Boolean discount;

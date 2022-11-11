@@ -30,7 +30,8 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String name;
-	
+	Float Price;
+	String Image;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Createdate")
