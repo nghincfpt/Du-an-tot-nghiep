@@ -29,9 +29,7 @@ public class ProductVarian implements Serializable {
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	@ManyToOne
-	@JoinColumn(name = "ImageID")
-	Image image;
+
 	Integer quantity;
 	Float price;
 	Boolean discount;
@@ -51,6 +49,14 @@ public class ProductVarian implements Serializable {
 	String chips;
 	String sim;
 	String battery;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CreateDate")
+	Date createDate = new Date();
+	@ManyToOne
+	@JoinColumn(name = "ProductID")
+	Product product;
+	
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "productVariant")
