@@ -1,0 +1,150 @@
+<div class="panel panel-default">
+ <div class="panel-heading">PRODUCT EDITION</div>
+ <div class="panel-body">
+   <div class="row">
+     <div class="col-sm-4 text-center">
+      <label for="image">
+         <img [ng-src]="{'/assets/images/'+form.image}" style="max-width:100%;height: 200px">
+         <img ng-src="/assets/images/{{form.image}}" style="max-width:100%;height: 200px">
+      </label>
+     </div>
+     <div class="col-sm-8">
+      <div class="row">
+       <div class="form-group col-sm-6">
+         <div>Name</div>
+         <input id="name" ng-model="form.name" class="form-control">
+         <small class="text-danger" id="name_error"></small>
+       </div>
+        <div class="form-group col-sm-6">
+         <div>Price</div>
+         <input id="price" ng-model="form.price" class="form-control">
+         <small class="text-danger" id="price_error"></small>
+       </div>
+      </div>
+      
+      <div class="row">
+       <div class="form-group col-sm-6">
+         <div>image</div>
+         <input type="file" class="form-control" id="image"
+         onchange="angular.element(this).scope().imageChanged(this.files)">
+       </div>
+        <div class="form-group col-sm-6">
+         <div>Category</div>
+       <select id="category" ng-model="form.category.id" class="form-control">
+        <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+       </select>
+        <small class="text-danger" id="category_error"></small>
+  </div>
+  </div>
+   <div class="row">
+    <div class="form-group col-sm-6">
+     <div>Create Date</div>
+     <input id="day" ng-model="form.createDate"  type="date" class="form-control">
+      
+    </div>
+     <div class="form-group col-sm-6">
+         <div>Available?</div>
+          <div class="form-control">
+          <label class="radio-inline">
+             <input id="available" ng-model="form.available" ng-value="true" name="available" type="radio"> Yes
+          </label>
+          
+          <label class="radio-inline">
+             <input id="available" ng-model="form.available" ng-value="false" name="available" type="radio"> No
+          </label>
+            <small class="text-danger" id="available_error"></small>
+       </div>
+      </div>
+   </div>
+  </div>
+ 
+ 
+<div class="panel-footer text-center">
+ <button ng-click="create()" class="btn btn-primary" >
+   <b class="glyphicon glyphicon-plus"></b>Create
+ </button>
+  <button ng-click="update()" class="btn btn-success">
+   <b class="glyphicon glyphicon-save"></b>Update
+ </button>
+  <button ng-click="delete(form)" class="btn btn-danger">
+   <b class="glyphicon glyphicon-trash"></b>Delete
+ </button>
+  <button ng-click="reset()" class="btn btn-info">
+   <b class="glyphicon glyphicon-refresh"></b>Reset
+ </button>
+</div>
+</div>
+</div>
+</div>
+<script >
+
+$("#save").on("click",function(){
+	
+checkname();
+price();
+category();
+day();
+});
+
+
+function checkname(){
+var txt=$("#name");
+var error=$("#name_error");
+  
+  txt.removeClass("is-valid").removeClass("is-invalid");
+
+var val=txt.val();
+
+if(val==""){
+	error.html("Name không đươc để trống");
+	txt.addClass("is-invalid");
+	return false;
+}else{
+	
+	txt.addClass("is-valid");
+}
+return true;
+};
+
+
+function price(){
+var txt=$("#price");
+var error=$("#price_error");
+  
+  txt.removeClass("is-valid").removeClass("is-invalid");
+
+var val=txt.val();
+
+if(val==""){
+	error.html("price không đươc để trống");
+	txt.addClass("is-invalid");
+	return false;
+
+}else{
+	
+	txt.addClass("is-valid");
+}
+return true;
+};
+
+
+function day(){
+var txt=$("#day");
+var error=$("#day_error");
+  
+  txt.removeClass("is-valid").removeClass("is-invalid");
+
+var val=txt.val();
+
+if(val==""){
+	error.html(" dd/MM/yyyy không đươc để trống");
+	txt.addClass("is-invalid");
+	return false;
+
+}else{
+	
+	txt.addClass("is-valid");
+}
+return true;
+};
+</script>

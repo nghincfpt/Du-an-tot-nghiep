@@ -1,0 +1,29 @@
+.poly-item img{
+	height: 150px;
+	max-width: 95%;
+}
+.poly-item.panel-title{
+	font-size: smaller;
+}
+.poly-item-detail img{
+	max-width: 80%;
+
+	}
+	  ul.panel-body li{
+        max-width: 524px;
+         /* khỏi bị tràn ra ngoài */
+        overflow: hidden;
+    }
+    ul.panel-body li a img{
+
+        max-width: 100%;
+        /* làm chậm quá trình phóng to  */
+        transition: all 0.3s ease-in-out; 
+    }
+    
+    ul.panel-body li:hover img{
+        /* phóng to lên 10% */
+      transform:scale(1.2) ;  
+    /* độ mờ khi run ảnh */
+      opacity: 0.8;
+    }
