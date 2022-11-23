@@ -5,7 +5,7 @@
     <body>
       <main>
        <div th:replace="~{/cart/view::shopping-cart}"></div>
-      <div class="panel panel-primary">
+      <div class="panel panel-primary container">
       
     <div class="panel-heading">ORDER PURCHASING</div>
       <div class="panel-body">
@@ -26,7 +26,24 @@
        </div>
         <div class="form-group col-sm-6">
           <div>address:</div>
-          <textarea ng-model="shippingaddress.address" class="form-control"></textarea>         
+          <textarea ng-model="order.address" class="form-control"></textarea>         
+       </div>
+               <div class="form-group col-sm-6">
+          <div>district:</div>
+          <textarea ng-model="order.district" class="form-control"></textarea>         
+       </div>
+               <div class="form-group col-sm-6">
+          <div>province:</div>
+          <textarea ng-model="order.province" class="form-control"></textarea>         
+       </div>
+               <div class="form-group col-sm-6">
+          <div>wards:</div>
+          <textarea ng-model="order.wards" class="form-control"></textarea>         
+       </div>
+           </div>
+               <div class="form-group col-sm-6">
+          <div>Phone:</div>
+          <textarea ng-model="order.sdt" class="form-control"></textarea>         
        </div>
       </div>
       </div>

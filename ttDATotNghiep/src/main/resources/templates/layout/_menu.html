@@ -1,33 +1,26 @@
 <div xmlns:th="http://www.thymeleaf.org">
+	<!-- NAVIGATION -->
+	<nav id="navigation">
+		<!-- container -->
+		<div class="container">
+			<!-- responsive-nav -->
+			<div id="responsive-nav">
+				<!-- NAV -->
 
-<nav class="navbar navbar-light" style="font-variant: small-caps; background: #e3f2fd ">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav">
-				<li ><a th:href="@{/product/list}"> <i class="glyphicon glyphicon-home"></i> Home</a></li>
-
-				<th:block th:if="${#request.remoteUser}">
-					<li ><a th:href="@{/security/logoff}"> <i class="glyphicon glyphicon-log-out"></i>Sign Out</a></li>
-					<li ><a th:href="@{/order/list}"> <i class="glyphicon glyphicon-shopping-cart"></i>You Orders </a></li>
+				<ul class="main-nav nav navbar-nav" th:each="c:${cates}"
+						>
+				<li ><a th:href="@{|/product/list?cid=${c.id}|}">[[${c.name}]]</a></li>
+				<li><a ></a></li>
 					
-					<li th:if="${#request.isUserInRole('DIRE')or #request.isUserInRole('STAF')}" >
-					<a th:href="@{/admin/home/index}"> <i class="glyphicon glyphicon-user"></i>Administration </a>		
-					<!--  <li ><a th:href="@{/orderADMIN/list}"> <i class="glyphicon glyphicon-shopping-cart"></i>ADMIN Orders </a></li>
-					 					</li> --> 
-					
-				</th:block>
-         <th:block th:unless="${#request.remoteUser}">
-      <li  ><a th:href="@{/security/login/form}"> <i class="glyphicon glyphicon-log-in"></i> Sign In </a></li>
-    </th:block>
-    </ul>
-    
-<ul>
 
-</ul>
-    <ul th:if="${#request.remoteUser}"
-				class="nav navbar-nav navbar-right">
-     <li > <a href="#"><i class="glyphicon glyphicon-user"></i>Welcome [[${#request.remoteUser}]]</a></li>
-    </ul>
-  </div>
-   
-</nav>
+
+				</ul>
+				<!-- /NAV -->
+			</div>
+			<!-- /responsive-nav -->
+		</div>
+		<!-- /container -->
+	</nav>
+
+
 </div>

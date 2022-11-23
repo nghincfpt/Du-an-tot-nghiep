@@ -32,5 +32,29 @@ public class ProductServiceImpl implements ProductService {
 	
 		return pdao.findByCategoryId(cid);
 	}
-	
+	@Override
+	public Product save(Product product) {
+		// TODO Auto-generated method stub
+		return pdao.save(product);
+	}
+
+	@Override
+	public Product update(Product product) {
+		// TODO Auto-generated method stub
+		return pdao.save(product);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		 pdao.deleteById(id);
+		
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		pdao.deleteById(id);
+		
+	}
+
 }

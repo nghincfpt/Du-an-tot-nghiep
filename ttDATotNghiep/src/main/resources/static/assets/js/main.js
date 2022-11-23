@@ -1,118 +1,168 @@
-'use strict';
+(function($) {
+	"use strict"
 
-var usernamePage = document.querySelector('#username-page');
-var chatPage = document.querySelector('#chat-page');
-var usernameForm = document.querySelector('#usernameForm');
-var messageForm = document.querySelector('#messageForm');
-var messageInput = document.querySelector('#message');
-var messageArea = document.querySelector('#messageArea');
-var connectingElement = document.querySelector('.connecting');
+	// Mobile Nav toggle
+	$('.menu-toggle > a').on('click', function (e) {
+		e.preventDefault();
+		$('#responsive-nav').toggleClass('active');
+	})
 
-var stompClient = null;
-var username = null;
+	// Fix cart dropdown from closing
+	$('.cart-dropdown').on('click', function (e) {
+		e.stopPropagation();
+	});
 
-var colors = [
-    '#2196F3', '#32c787', '#00BCD4', '#ff5652',
-    '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
-];
+	/////////////////////////////////////////
 
-function connect(event) {
-    username = document.querySelector('#name').value.trim();
+	// Products Slick
+	$('.products-slick').each(function() {
+		var $this = $(this),
+				$nav = $this.attr('data-nav');
 
-    if(username) {
-        usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
+		$this.slick({
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			autoplay: true,
+			infinite: true,
+			speed: 300,
+			dots: false,
+			arrows: true,
+			appendArrows: $nav ? $nav : false,
+			responsive: [{
+	        breakpoint: 991,
+	        settings: {
+	          slidesToShow: 2,
+	          slidesToScroll: 1,
+	        }
+	      },
+	      {
+	        breakpoint: 480,
+	        settings: {
+	          slidesToShow: 1,
+	          slidesToScroll: 1,
+	        }
+	      },
+	    ]
+		});
+	});
 
-        var socket = new SockJS('/ws');
-        stompClient = Stomp.over(socket);
+	// Products Widget Slick
+	$('.products-widget-slick').each(function() {
+		var $this = $(this),
+				$nav = $this.attr('data-nav');
 
-        stompClient.connect({}, onConnected, onError);
-    }
-    event.preventDefault();
-}
+		$this.slick({
+			infinite: true,
+			autoplay: true,
+			speed: 300,
+			dots: false,
+			arrows: true,
+			appendArrows: $nav ? $nav : false,
+		});
+	});
 
+	/////////////////////////////////////////
 
-function onConnected() {
-    // Subscribe to the Public Topic
-    stompClient.subscribe('/topic/public', onMessageReceived);
+	// Product Main img Slick
+	$('#product-main-img').slick({
+    infinite: true,
+    speed: 300,
+    dots: false,
+    arrows: true,
+    fade: true,
+    asNavFor: '#product-imgs',
+  });
 
-    // Tell your username to the server
-    stompClient.send("/app/chat.addUser",
-        {},
-        JSON.stringify({sender: username, type: 'JOIN'})
-    )
+	// Product imgs Slick
+  $('#product-imgs').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    centerMode: true,
+    focusOnSelect: true,
+		centerPadding: 0,
+		vertical: true,
+    asNavFor: '#product-main-img',
+		responsive: [{
+        breakpoint: 991,
+        settings: {
+					vertical: false,
+					arrows: false,
+					dots: true,
+        }
+      },
+    ]
+  });
 
-    connectingElement.classList.add('hidden');
-}
+	// Product img zoom
+	var zoomMainProduct = document.getElementById('product-main-img');
+	if (zoomMainProduct) {
+		$('#product-main-img .product-preview').zoom();
+	}
 
+	/////////////////////////////////////////
 
-function onError(error) {
-    connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
-    connectingElement.style.color = 'red';
-}
+	// Input number
+	$('.input-number').each(function() {
+		var $this = $(this),
+		$input = $this.find('input[type="number"]'),
+		up = $this.find('.qty-up'),
+		down = $this.find('.qty-down');
 
+		down.on('click', function () {
+			var value = parseInt($input.val()) - 1;
+			value = value < 1 ? 1 : value;
+			$input.val(value);
+			$input.change();
+			updatePriceSlider($this , value)
+		})
 
-function sendMessage(event) {
-    var messageContent = messageInput.value.trim();
-    if(messageContent && stompClient) {
-        var chatMessage = {
-            sender: username,
-            content: messageInput.value,
-            type: 'CHAT'
-        };
-        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
-        messageInput.value = '';
-    }
-    event.preventDefault();
-}
+		up.on('click', function () {
+			var value = parseInt($input.val()) + 1;
+			$input.val(value);
+			$input.change();
+			updatePriceSlider($this , value)
+		})
+	});
 
+	var priceInputMax = document.getElementById('price-max'),
+			priceInputMin = document.getElementById('price-min');
 
-function onMessageReceived(payload) {
-    var message = JSON.parse(payload.body);
+	priceInputMax.addEventListener('change', function(){
+		updatePriceSlider($(this).parent() , this.value)
+	});
 
-    var messageElement = document.createElement('li');
+	priceInputMin.addEventListener('change', function(){
+		updatePriceSlider($(this).parent() , this.value)
+	});
 
-    if(message.type === 'JOIN') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
-    } else if (message.type === 'LEAVE') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' left!';
-    } else {
-        messageElement.classList.add('chat-message');
+	function updatePriceSlider(elem , value) {
+		if ( elem.hasClass('price-min') ) {
+			console.log('min')
+			priceSlider.noUiSlider.set([value, null]);
+		} else if ( elem.hasClass('price-max')) {
+			console.log('max')
+			priceSlider.noUiSlider.set([null, value]);
+		}
+	}
 
-        var avatarElement = document.createElement('i');
-        var avatarText = document.createTextNode(message.sender[0]);
-        avatarElement.appendChild(avatarText);
-        avatarElement.style['background-color'] = getAvatarColor(message.sender);
+	// Price Slider
+	var priceSlider = document.getElementById('price-slider');
+	if (priceSlider) {
+		noUiSlider.create(priceSlider, {
+			start: [1, 999],
+			connect: true,
+			step: 1,
+			range: {
+				'min': 1,
+				'max': 999
+			}
+		});
 
-        messageElement.appendChild(avatarElement);
+		priceSlider.noUiSlider.on('update', function( values, handle ) {
+			var value = values[handle];
+			handle ? priceInputMax.value = value : priceInputMin.value = value
+		});
+	}
 
-        var usernameElement = document.createElement('span');
-        var usernameText = document.createTextNode(message.sender);
-        usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);
-    }
-
-    var textElement = document.createElement('p');
-    var messageText = document.createTextNode(message.content);
-    textElement.appendChild(messageText);
-
-    messageElement.appendChild(textElement);
-
-    messageArea.appendChild(messageElement);
-    messageArea.scrollTop = messageArea.scrollHeight;
-}
-
-
-function getAvatarColor(messageSender) {
-    var hash = 0;
-    for (var i = 0; i < messageSender.length; i++) {
-        hash = 31 * hash + messageSender.charCodeAt(i);
-    }
-    var index = Math.abs(hash % colors.length);
-    return colors[index];
-}
-
-usernameForm.addEventListener('submit', connect, true)
-messageForm.addEventListener('submit', sendMessage, true)
+})(jQuery);

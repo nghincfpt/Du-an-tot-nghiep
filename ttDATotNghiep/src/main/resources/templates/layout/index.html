@@ -21,12 +21,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
+    		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+
+		<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="/assets/css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="/assets/css/slick-theme.css"/>
+
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="/assets/css/nouislider.min.css"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="/assets/css/style.css"/>
  <link href="/assets/css/shopping-cart-app.css" rel="stylesheet">
  <!--  paypal -->
  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=buttons"></script>
 </head>
 
-<body class="container" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<body  ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <header class="row">
       <div th:replace="layout/_header.html"></div>
     </header>
@@ -34,27 +52,16 @@
         <div th:replace="/layout/_menu.html"></div>
 
     </nav>
-    <div class="row">
-       <aside class="col-sm-3">
-            <div th:replace="/layout/_cart-info.html"></div>
-            <div th:replace="/layout/_category.html"></div>
-             <div th:replace="/layout/_trademark.html"></div>
-            <div th:replace="/layout/_price.html"></div>
-
-        </aside>
-        <article class="col-sm-9">
+   
+       
+        <article >
             <div th:replace="${main}"></div>
 
         </article>
 
-     
-    </div>
-    <footer class="row">
-          <div class="panel panel-default">
-           <div class="panel-body text-center">
-             <h4>FPT Polytechnic &copy; 2021,all right reserver.</h4>
-           </div>
-          </div>   
+   
+    <footer>
+          <div th:replace="/layout/_footer.html"></div>
      </footer>
      <script src="/assets/js/shopping-cart-app.js"></script>
 </body>

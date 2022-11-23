@@ -11,5 +11,13 @@ public interface ProductService {
 	Product findById(Integer id);
 
 	List<Product> findByCategoryId(String cid );
+	
+	Product save(Product product);
+
+	Product update(Product product);
+
+	void deleteById(Integer id);
+
+	void delete(Integer id);
 
 }

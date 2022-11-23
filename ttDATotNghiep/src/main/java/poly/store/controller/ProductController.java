@@ -26,8 +26,6 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
-	
-	
 	@RequestMapping("product/list")
 	public String list(Model model ,@RequestParam("cid") Optional<String> cid) {
 	 if (cid.isPresent()) {
@@ -40,7 +38,13 @@ public class ProductController {
 	}
 	 return "product/list";
 	}
-	@RequestMapping("/product/detail{id}")
+	@RequestMapping("/product/home")
+	public String Home(Model model) {
+		List<Product> list = productService.findAll();
+		model.addAttribute("items",list);
+		return "product/home";
+	}
+	@RequestMapping("/product/detail/{id}")
 	public String detail(Model model,@PathVariable("id") Integer id) {
 		Product item = productService.findById(id);
 		model.addAttribute("item",item);

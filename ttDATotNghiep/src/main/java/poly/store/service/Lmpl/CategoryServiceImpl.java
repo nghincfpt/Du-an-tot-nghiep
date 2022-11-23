@@ -10,7 +10,7 @@ import poly.store.entity.Category;
 import poly.store.service.categoryService;
 
 @Service
-public class categoryServiceImpl implements categoryService {
+public class CategoryServiceImpl implements categoryService {
 
 	@Autowired
 	CategoryDAO cdao;

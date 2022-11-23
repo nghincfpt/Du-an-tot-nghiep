@@ -49,7 +49,7 @@ public class Order implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "Username")
-	Account account;
+	public Account account;
 	
 	
 	@JsonIgnore

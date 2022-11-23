@@ -4,8 +4,8 @@
 
 <body>
 	<main>                     
-		<div class="panel panel-primary" th:fragment="shopping-cart">
-			<div class="panel-heading">SHOPPING CART</div>
+		<div class="panel panel-danger container" th:fragment="shopping-cart">
+			<div class="panel-heading mt-6" >SHOPPING CART</div>
 
 			<table class="table">
 				<thead>
@@ -21,6 +21,7 @@
 				<tbody>
 					<tr ng-repeat="item in cart.items">
 						<td>{{item.id}}</td>
+						
 						<td>{{item.name}}</td>
 						<td>${{item.price |number:2}}</td>
 						<td><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"
