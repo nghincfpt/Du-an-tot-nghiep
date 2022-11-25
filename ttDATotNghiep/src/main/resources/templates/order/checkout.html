@@ -4,53 +4,161 @@
  
     <body>
       <main>
-       <div th:replace="~{/cart/view::shopping-cart}"></div>
+      <div th:replace="~{/cart/view::shopping-cart}"></div>
+       <div>
       <div class="panel panel-primary container">
-      
-    <div class="panel-heading">ORDER PURCHASING</div>
-      <div class="panel-body">
-      <div class="row">
-      <div class="form-group col-sm-6">
-       <div>Purchaser</div>
-       <div class="form-control" id="username">[[${#request.remoteUser}]]</div>
-      </div>
-      <div class="form-group col-sm-6">
-       <div>Order Date</div>
-       <div class="form-control">{{order.createDate | date:'dd-MM-yyyy'}}</div>
-      </div>
-      </div>
-      <div class="row">
-       <div class="form-group col-sm-6">
-          <div>status:</div>
-          <input ng-model="order.status" class="form-control"/>      
-       </div>
-        <div class="form-group col-sm-6">
-          <div>address:</div>
-          <textarea ng-model="order.address" class="form-control"></textarea>         
-       </div>
-               <div class="form-group col-sm-6">
-          <div>district:</div>
-          <textarea ng-model="order.district" class="form-control"></textarea>         
-       </div>
-               <div class="form-group col-sm-6">
-          <div>province:</div>
-          <textarea ng-model="order.province" class="form-control"></textarea>         
-       </div>
-               <div class="form-group col-sm-6">
-          <div>wards:</div>
-          <textarea ng-model="order.wards" class="form-control"></textarea>         
-       </div>
-           </div>
-               <div class="form-group col-sm-6">
-          <div>Phone:</div>
-          <textarea ng-model="order.sdt" class="form-control"></textarea>         
-       </div>
-      </div>
-      </div>
-      <div class="panel-footer text-right">
-         <button ng-click="order.purchase()" class="btn btn-success">Purchase</button>
-      </div>
-      </div>
+      	<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+						<div class="billing-details" >
+							<div class="section-title">
+								<h3 class="title">Billing address</h3>
+							</div>
+							<div class="form-group">
+								<div class="input" id="username" type="text">[[${#request.remoteUser}]]</div>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" ng-model="order.name" name="last-name" placeholder="Name">
+							</div>
+							<div class="form-group">
+								<input class="input" type="email" ng-model="order.email" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" ng-model="order.address" placeholder="Address">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" ng-model="order.district" name="city" placeholder="District">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" ng-model="order.province" name="country" placeholder="Country">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" ng-model="order.wards" name="zip-code" placeholder="wards">
+							</div>
+							<div class="form-group">
+								<input class="input" type="tel" ng-model="order.sdt" name="tel" placeholder="Telephone">
+							</div>
+							<div class="form-group">
+								<div class="input-checkbox">
+									<input type="checkbox" id="create-account">
+									<label for="create-account">
+										<span></span>
+										Create Account?
+									</label>
+									<div class="caption">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+										<input class="input" type="password" name="password" placeholder="Enter Your Password">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Billing Details -->
+
+						<!-- Shiping Details -->
+						<div class="shiping-details">
+							<div class="section-title">
+								<h3 class="title">Shiping address</h3>
+							</div>
+							<div class="input-checkbox">
+								<input type="checkbox" id="shiping-address">
+								<label for="shiping-address">
+									<span></span>
+									Ship to a diffrent address?
+								</label>
+								<div class="caption">
+									<div class="form-group">
+										<input class="input" type="text" name="first-name" placeholder="First Name">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="last-name" placeholder="Last Name">
+									</div>
+									<div class="form-group">
+										<input class="input" type="email" name="email" placeholder="Email">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="address" placeholder="Address">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="city" placeholder="City">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="country" placeholder="Country">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+									</div>
+									<div class="form-group">
+										<input class="input" type="tel" name="tel" placeholder="Telephone">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Shiping Details -->
+
+						<!-- Order notes -->
+						<div class="order-notes">
+							<textarea class="input" placeholder="Order Notes"></textarea>
+						</div>
+						<!-- /Order notes -->
+					</div>
+
+					<!-- Order Details -->
+					<div class="col-md-5 order-details">
+						<div class="section-title text-center">
+							<h3 class="title">Your Order</h3>
+						</div>
+						<div class="order-summary">
+							<div class="order-col">
+								<div><strong>PRODUCT</strong></div>
+								<div><strong>TOTAL</strong></div>
+							</div>
+							<div class="order-products" th:each="detail:*{orderDetails}" th:object="${detail}">
+								<div class="order-col">
+									<div>[[*{quantity}]]x[[*{product.name}]]</div>
+									<div>$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="payment-method">
+							<div class="input-radio">
+								<input type="radio" name="payment" id="payment-1">
+								<label for="payment-1">
+									<span></span>
+									Direct Bank Transfer
+								</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<div class="input-radio">
+								<input type="radio" name="payment" id="payment-2">
+								<label for="payment-2">
+									<span></span>
+									Cheque Payment
+								</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							
+						</div>
+						
+						<a ng-click="order.purchase()" class="primary-btn order-submit">Place order</a>
+					</div>
+					<!-- /Order Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		</div>
+		</div>
       </main>
 
     </body>

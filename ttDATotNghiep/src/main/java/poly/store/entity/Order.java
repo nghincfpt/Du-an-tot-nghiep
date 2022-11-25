@@ -41,6 +41,7 @@ public class Order implements Serializable {
 	String sdt;
 	String wards;
 	String pay;
+	String name;
 	
 //	@OneToOne
 //	@JoinColumn(name = "ID")

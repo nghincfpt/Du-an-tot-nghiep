@@ -1,58 +1,164 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
- th:replace="~{/layout/index::dynamic(~{::main})}">
- 
-    <body>
-      <main th:object="${order}">
-           <div class="panel panel-primary container">
-              <div class="panel-heading">ORDER INFORMATION</div>
-              <div class="panel-body">
-               <div class="row">
-               <div class="form-group col-sm-4">
-                <div>Order Number</div>
-                <input th:field="*{id}" class="form-control" readonly>
-               </div>
-                <div class="form-group col-sm-4">
-                <div>Purchaser</div>
-                <input th:field="*{account.username}" class="form-control" readonly>
-               </div>
-                 <div class="form-group col-sm-4">
-                <div>Purchased Date:</div>
-                <input th:field="*{createDate}" class="form-control" readonly>
-               </div>       
-               </div>
-               <div class="row">
-                  <div class="form-group col-sm-12">
-                   <div>Shipping address</div>
-                   <textarea th:field="*{status}" class="form-control" readonly></textarea>
-                  </div>
-               </div>
-               </div>
-              </div>
-         <div class="panel panel-primary container">
-             <div class="panel-heading">ORDER LINES</div>
-             <table class="table">
-              <thead>
-                <tr>
-                   <th>ID</th>
-                    <th>Name</th>
-                     <th>Price</th>
-                      <th>Quantity</th>
-                       <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-               <tr th:each="detail:*{orderDetails}" th:object="${detail}">
-                 <td>[[*{product.id}]]</td>      
-                  <td>[[*{product.name}]]</td> 
-                   <td>$[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</td> 
-                    <td>[[*{quantity}]]</td> 
-                     <td>$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</td>            
-               </tr>
-              </tbody>
-             </table>
-            <a th:href="@{/order/export}">Export To CSV</a>
-         </div>
-      </main>
-    </body>
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+
+<body>
+	<main th:object="${order}">
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">ORDER INFORMATION</h3>
+							</div>
+							<div class="form-group">
+								<input th:field="*{id}" class="form-control" readonly>
+							</div>
+							<div class="form-group">
+								<input th:field="*{account.username}" class="form-control"
+									readonly>
+							</div>
+							<div class="form-group">
+								<input th:field="*{createDate}" class="form-control" readonly>
+							</div>
+							<div class="form-group">
+								<input th:field="*{address}" class="form-control" readonly>
+							</div>
+							<div class="form-group">
+								<input th:field="*{district}" class="form-control" readonly>
+							</div>
+							<div class="form-group">
+								<input th:field="*{province}" class="form-control" readonly>
+							</div>
+							<div class="form-group">
+								<input th:field="*{wards}" class="form-control" readonly>
+							</div>
+
+							<div class="form-group">
+								<input th:field="*{sdt}" class="form-control" readonly>
+							</div>
+							<div class="form-group">
+								<div class="input-checkbox">
+									<input type="checkbox" id="create-account"> <label
+										for="create-account"> <span></span> Create Account?
+									</label>
+									<div class="caption">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+											elit, sed do eiusmod tempor incididunt.</p>
+										<input class="input" type="password" name="password"
+											placeholder="Enter Your Password">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Billing Details -->
+
+						<!-- Shiping Details -->
+						<div class="shiping-details">
+							<div class="section-title">
+								<h3 class="title">Shiping address</h3>
+							</div>
+							<div class="input-checkbox">
+								<input type="checkbox" id="shiping-address"> <label
+									for="shiping-address"> <span></span> Ship to a diffrent
+									address?
+								</label>
+								<div class="caption">
+									<div class="form-group">
+										<input class="input" type="text" name="first-name"
+											placeholder="First Name">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="last-name"
+											placeholder="Last Name">
+									</div>
+									<div class="form-group">
+										<input class="input" type="email" name="email"
+											placeholder="Email">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="address"
+											placeholder="Address">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="city"
+											placeholder="City">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="country"
+											placeholder="Country">
+									</div>
+									<div class="form-group">
+										<input class="input" type="text" name="zip-code"
+											placeholder="ZIP Code">
+									</div>
+									<div class="form-group">
+										<input class="input" type="tel" name="tel"
+											placeholder="Telephone">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Shiping Details -->
+
+						<!-- Order notes -->
+						<div class="order-notes">
+							<textarea class="input" placeholder="Order Notes"></textarea>
+						</div>
+						<!-- /Order notes -->
+					</div>
+
+					<!-- Order Details -->
+					<div class="col-md-5 order-details">
+						<div class="section-title text-center">
+							<h3 class="title">ORDER LINES</h3>
+						</div>
+						<div class="order-summary">
+							<div class="order-col">
+								<div>
+									<strong>PRODUCT</strong>
+								</div>
+								<div>
+									<strong>TOTAL</strong>
+								</div>
+							</div>
+							<div class="order-products" th:each="detail:*{orderDetails}" th:object="${detail}">
+								<div class="order-col">
+									<div>[[*{quantity}]]x[[*{product.name}]]</div>
+									<div>$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</div>
+								</div>
+
+							</div>
+							<div class="order-col">
+								<div>Shiping</div>
+								<div>
+									<strong>FREE</strong>
+								</div>
+							</div>
+							<div class="order-col" th:each="detail:*{orderDetails}" th:object="${detail}">
+								<div>
+									<strong>TOTAL</strong>
+								</div>
+								<div>
+									<strong class="order-total">$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</strong>
+								</div>
+							</div>
+						</div>
+						
+						<a href="#" class="primary-btn order-submit">Home</a>
+					</div>
+					<!-- /Order Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		
+	</main>
+</body>
 </html>
