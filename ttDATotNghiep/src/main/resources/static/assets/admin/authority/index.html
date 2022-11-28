@@ -1,13 +1,22 @@
- <ul class="nav nav-tabs" style="font-variant:small-caps;">
-<li><a data-toggle="tab" data-target="#edit" href=""> Quản lý tài khoản</a></li>
-<li class="active"><a data-toggle="tab" data-target="#list" href="">phần quyền</a></li>
+
+<ul class="nav nav-tabs" style="font-variant: small-caps;">
+	<li><a data-toggle="tab" data-target="#edit" href=""
+		class="nav-link active"> Accounts</a></li>
+	<li class="nav-link active"><a data-toggle="tab"
+		data-target="#list" href="">Authority</a></li>
+	<li class="nav-link active"><a data-toggle="tab"
+		data-target="#add" href="">Editing</a></li>
+
 </ul>
 <div class="tab-content">
- <div id="list" class="tab-pane fade">
-  <div ng-include="'/assets/admin/authority/_list.html'"></div>
- </div>
- 
- <div id="edit" class="tab-pane fade in active">
-  <div ng-include="'/assets/admin/authority/orderADMIN/list.html'"></div>
- </div>
+	<div id="list" class="tab-pane fade">
+		<div ng-include="'/assets/admin/authority/_list.html'"></div>
+	</div>
+
+	<div id="add" class="tab-pane fade in active">
+		<div ng-include="'/assets/admin/authority/_table.html'"></div>
+	</div>
+	<div id="edit" class="tab-pane fade in active">
+		<div ng-include="'/assets/admin/authority/_form.html'"></div>
+	</div>
 </div>

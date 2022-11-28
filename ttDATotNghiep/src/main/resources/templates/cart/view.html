@@ -29,9 +29,11 @@
 										<td class="shoping__cart__quantity"><input
 											ng-change="cart.saveToLocalStorage()" type="number"
 											ng-model="item.qty" min="1" style="border: 1px;"></td>
-										<td class="shoping__cart__total">${{item.qty*item.price | number : 2}}</td>
-										<td class="shoping__cart__item__close" ng-click="cart.remove(id)"><span
-											class="icon_close"></span></td>
+										<td class="shoping__cart__total">${{item.qty*item.price |
+											number : 2}}</td>
+										<td ng-click="cart.remove(id)"><a class="btn btn-default"> <b
+												class="fa fa-trash"></b>
+										</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -60,8 +62,9 @@
 					<div class="col-lg-6">
 						<div class="shoping__checkout">
 							<h5>Check Out</h5>
-							
-							<a  th:href="@{/order/checkout}" class="primary-btn">PROCEED TO CHECKOUT</a>
+
+							<a th:href="@{/order/checkout}" class="primary-btn">PROCEED
+								TO CHECKOUT</a>
 						</div>
 					</div>
 				</div>

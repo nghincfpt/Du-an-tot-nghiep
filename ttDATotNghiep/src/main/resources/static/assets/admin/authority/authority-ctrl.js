@@ -2,6 +2,7 @@ app.controller("authority-ctrl", function($scope, $http, $location) {
 	$scope.roles=[];
 	$scope.admins=[];
 	$scope.authorities=[];
+	$scope.form={};
 
 $scope.initialize=function(){
 
@@ -61,6 +62,26 @@ $scope.initialize=function(){
 			alert("Thu hồi quyền sữ dụng thất bại");
 			console.log("Error",error);
 		})
+		
+	}
+	//hiển thị lên form
+	 // ràng buộc duwx liệu  =ng-model="form.name"
+	$scope.edit = function(item){
+		$scope.form=angular.copy(item);
+		$(".nav-tabs a:eq(0)").tab('show')
+	}
+		// thêm tài khoản mới
+	$scope.create =function(){
+		var item =angular.copy($scope.form);
+		$http.post(`/rest/accounts`,item).then(resp =>{
+			resp.data.createDate = new Date(resp.data.createDate)
+			$scope.items.push(resp.data);
+			$scope.reset();
+			alert("Thêm mới tài khoản thành công!")
+		}).catch(error =>{
+			alert("Lỗi thêm mới sản phẩm!");
+			console.log("Error",error);
+		});
 		
 	}
 	$scope.pager={

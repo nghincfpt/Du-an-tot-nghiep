@@ -33,78 +33,12 @@ app.controller("product-ctrl",function($scope,$http){
 	}
 	//hiển thị lên form
 	 // ràng buộc duwx liệu  =ng-model="form.name"
-	$scope.edit = function(item){
-		$scope.form=angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show')
-	}
-	// thêm sản phẩm mới
-	$scope.create =function(){
-		var item =angular.copy($scope.form);
-		$http.post(`/rest/products`,item).then(resp =>{
-			resp.data.createDate = new Date(resp.data.createDate)
-			$scope.items.push(resp.data);
-			$scope.reset();
-			alert("Thêm mới sản phẩm thành công!")
-		}).catch(error =>{
-			alert("Lỗi thêm mới sản phẩm!");
-			console.log("Error",error);
-		});
-		
-	}
-	// cập nhật sản phẩm
-	$scope.update=function(){
-		var item =angular.copy($scope.form);
-		$http.put(`/rest/products/${item.id}`,item).then(resp =>{
-			var index =$scope.items.findIndex(p => p.id ==item.id);
-			 
-			 $scope.items[index]=item;
-			alert("cập nhật  sản phẩm thành công!")
-		}).catch(error =>{
-			alert("cập nhật sản phẩm thất bại");
-			console.log("Error",error);
-		});
-		
-	}
-	// xóa sản phẩm
-	$scope.delete=function(item){
-		//var item =angular.copy($scope.form);
-		console.log(item);
-		console.log('----------');
-		$http.delete(`/rest/products/${item.id}`).then(resp =>{
-			var index =$scope.items.findIndex(p => p.id ==item.id);
-			  // dùng SPICE để xóa sản phẩm
-			 $scope.items.splice(index,1);
-			$scope.reset();
-			alert("xóa sản phẩm thành công!")
-		}).catch(error =>{
-			alert("xóa sản phẩm thất bại");
-			console.log("Error",error);
-		});
-		
-	}
-	//upload hình
-	$scope.imageChanged= function(files){
-		
-		var data= new FormData();
-		data.append('file',files[0]);
-		$http.post('/rest/upload/images',data,{
-			transformRequest:angular.identity,
-			headers:{'Content-Type':undefined}
-			// upload thành công thì thế vào data đó
-	   	}).then(resp =>{
-		$scope.form.image = resp.data.name;
-	}).catch(error =>{
-			alert(" lỗi upload hình ảnh");
-			console.log("Error",error);
-		})
-	}
-	
-		$scope.edit = function(cate){
+	$scope.edit = function(cate){
 		$scope.form=angular.copy(cate);
 		$(".nav-tabs a:eq(0)").tab('show')
 	}
 	// thêm sản phẩm mới
-	$scope.createCate =function(){
+	$scope.create =function(){
 		var cate =angular.copy($scope.form);
 		$http.post(`/rest/categories`,cate).then(resp =>{
 			resp.data.createDate = new Date(resp.data.createDate)
@@ -118,7 +52,7 @@ app.controller("product-ctrl",function($scope,$http){
 		
 	}
 	// cập nhật sản phẩm
-	$scope.updateCate=function(){
+	$scope.update=function(){
 		var cate =angular.copy($scope.form);
 		$http.put(`/rest/categories/${cate.id}`,cate).then(resp =>{
 			var index =$scope.cates.findIndex(c => c.id ==cate.id);
@@ -132,7 +66,7 @@ app.controller("product-ctrl",function($scope,$http){
 		
 	}
 	// xóa sản phẩm
-	$scope.deleteCate=function(cate){
+	$scope.delete=function(cate){
 		//var item =angular.copy($scope.form);
 		console.log(cate);
 		console.log('----------');
@@ -148,6 +82,7 @@ app.controller("product-ctrl",function($scope,$http){
 		});
 		
 	}
+	
 	$scope.pager={
 		page:0,
 		size:10,
