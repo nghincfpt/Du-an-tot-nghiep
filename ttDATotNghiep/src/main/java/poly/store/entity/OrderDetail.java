@@ -25,9 +25,6 @@ public class OrderDetail implements Serializable{
 	@JoinColumn(name = "OrderID")
 	Order order;
 	
-	@ManyToOne @JoinColumn(name = "ProductVariantID")
-	ProductVarian productVariant;
-
 	Boolean discount;
 	Float price;
 	Integer quantity;

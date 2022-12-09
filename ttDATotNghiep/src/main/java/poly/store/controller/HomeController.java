@@ -10,8 +10,13 @@ public String home() {
 	return "redirect:/product/home";
 }
 
-@RequestMapping({"/admin","/admin/home/index"})
+@RequestMapping({"/admin","/admin/index"})
 public String admin() {
 	return "redirect:/assets/admin/index.html";
+}
+
+@RequestMapping({"/admin","/admin/product/list"})
+public String adminProduct() {
+	return "redirect:/assets/admin/productlist.html";
 }
 }

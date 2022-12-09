@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import poly.store.DAO.CategoryDAO;
 import poly.store.entity.Category;
-import poly.store.entity.Product;
+
 import poly.store.service.categoryService;
 
 @Service

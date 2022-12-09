@@ -17,7 +17,7 @@
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
 									<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-									<li th:each="c:${cates} "><a th:href="@{|/product/list?cid=${c.id}|}">[[${c.trademark}]]</a></li>
+									<li th:each="c:${cates} "><a th:href="@{|/product/list?cid=${c.id}|}"></a></li>
 									
 								</ul>
 							</div>

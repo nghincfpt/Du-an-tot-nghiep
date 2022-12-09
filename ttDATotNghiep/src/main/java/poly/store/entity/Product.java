@@ -30,9 +30,22 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String name;
-	Float Price;
-	
+	String Price;
 	String Image;
+	String Image2;
+	String Image3;
+	String Image4;
+	String Description;
+	String Size;
+	String Origin;
+	String Screen;
+	String Weight;
+	String Year;
+	String Graphics;
+	String Hard;
+	String Ram;
+	String Color;
+	
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Createdate")
@@ -41,9 +54,8 @@ public class Product implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Categoryid")
 	Category category;
-	@JsonIgnore
-	@OneToMany(mappedBy = "product")
-	List<ProductVarian> productVa;
-	
+	@ManyToOne
+	@JoinColumn(name = "ManuID")
+	Manufacturer manufacturer;
 
 }

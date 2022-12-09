@@ -47,7 +47,7 @@ public class ProductRestController {
 	}
 	
 	
-	@PostMapping()
+	@PostMapping("/form")
 	public Product create(@RequestBody Product product) {
 		return productService.save(product);
 	}

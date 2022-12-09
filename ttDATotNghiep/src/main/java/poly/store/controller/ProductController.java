@@ -50,4 +50,10 @@ public class ProductController {
 		model.addAttribute("item",item);
 		return "product/detail";
 	}
+	@RequestMapping("/product/update/{id}")
+	public String editproduct(Model model,@PathVariable("id") Integer id) {
+		Product item = productService.findById(id);
+		model.addAttribute("itemp",item);
+		return "redirect:/assets/admin/edit-product.html";
+	}
 }

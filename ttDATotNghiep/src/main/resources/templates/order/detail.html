@@ -14,7 +14,7 @@
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
-								<h3 class="title">ORDER INFORMATION</h3>
+								<h3 class="title">Thông tin chi tiết đơn hàng</h3>
 							</div>
 							<div class="form-group">
 								<input th:field="*{id}" class="form-control" readonly>
@@ -45,13 +45,12 @@
 							<div class="form-group">
 								<div class="input-checkbox">
 									<input type="checkbox" id="create-account"> <label
-										for="create-account"> <span></span> Create Account?
+										for="create-account"> <span></span> Chú thích với của hàng
 									</label>
 									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt.</p>
+										<p>Để lại lời nhắn cho cửa hàng nếu có vấn đề với sản phẩm </p>
 										<input class="input" type="password" name="password"
-											placeholder="Enter Your Password">
+											placeholder="Enter Your Comment">
 									</div>
 								</div>
 							</div>
@@ -65,8 +64,7 @@
 							</div>
 							<div class="input-checkbox">
 								<input type="checkbox" id="shiping-address"> <label
-									for="shiping-address"> <span></span> Ship to a diffrent
-									address?
+									for="shiping-address"> <span></span> Chuyển tới địa chỉ khác ?
 								</label>
 								<div class="caption">
 									<div class="form-group">
@@ -121,10 +119,10 @@
 						<div class="order-summary">
 							<div class="order-col">
 								<div>
-									<strong>PRODUCT</strong>
+									<strong>Sản phẩm</strong>
 								</div>
 								<div>
-									<strong>TOTAL</strong>
+									<strong>Tổng tiền</strong>
 								</div>
 							</div>
 							<div class="order-products" th:each="detail:*{orderDetails}" th:object="${detail}">
@@ -135,14 +133,14 @@
 
 							</div>
 							<div class="order-col">
-								<div>Shiping</div>
+								<div>Phí vận chuyển</div>
 								<div>
-									<strong>FREE</strong>
+									<strong>Miễn phí</strong>
 								</div>
 							</div>
 							<div class="order-col" th:each="detail:*{orderDetails}" th:object="${detail}">
 								<div>
-									<strong>TOTAL</strong>
+									<strong>Tổng</strong>
 								</div>
 								<div>
 									<strong class="order-total">$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</strong>
@@ -150,7 +148,7 @@
 							</div>
 						</div>
 						
-						<a href="#" class="primary-btn order-submit">Home</a>
+						<a href="#" class="primary-btn order-submit">Tiếp tục mua hàng</a>
 					</div>
 					<!-- /Order Details -->
 				</div>
