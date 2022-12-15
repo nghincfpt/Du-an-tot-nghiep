@@ -1,5 +1,5 @@
 .poly-item img{
-	height: 150px;
+	height: 250px;
 	max-width: 95%;
 }
 .poly-item.panel-title{
@@ -11,19 +11,19 @@
 	}
 	  ul.panel-body li{
         max-width: 524px;
-         /* khỏi bị tràn ra ngoài */
+         /* khá»�i bá»‹ trÃ n ra ngoÃ i */
         overflow: hidden;
     }
     ul.panel-body li a img{
 
         max-width: 100%;
-        /* làm chậm quá trình phóng to  */
+        /* lÃ m cháº­m quÃ¡ trÃ¬nh phÃ³ng to  */
         transition: all 0.3s ease-in-out; 
     }
     
     ul.panel-body li:hover img{
-        /* phóng to lên 10% */
+        /* phÃ³ng to lÃªn 10% */
       transform:scale(1.2) ;  
-    /* độ mờ khi run ảnh */
+    /* Ä‘á»™ má»� khi run áº£nh */
       opacity: 0.8;
     }

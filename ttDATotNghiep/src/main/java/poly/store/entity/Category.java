@@ -29,7 +29,7 @@ public class Category implements Serializable {
 	String id;
 	String name;
 	String Description;
-	@Temporal(TemporalType.DATE)
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")

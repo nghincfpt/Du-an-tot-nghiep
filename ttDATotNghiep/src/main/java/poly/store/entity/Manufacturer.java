@@ -58,12 +58,9 @@ public class Manufacturer implements Serializable {
 	// Thong tin mo ta
 	private String description;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "CreateDay")
-	Date createDate = new Date();
 
-	// Thong tin ma nguoi tao
-	private int Personcreate;
+
+	
 
 	
 	@JsonIgnore

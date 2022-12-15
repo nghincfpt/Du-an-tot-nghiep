@@ -5,8 +5,7 @@
 	<!-- Basic Page Info -->
 	<meta charset="utf-8" />
 	<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png" />
 	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png" />
@@ -243,11 +242,7 @@
 		<div class="brand-logo">
 			<a href="index.html">
 				<img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
-				<img
-					src="vendors/images/deskapp-logo-white.svg"
-					alt=""
-					class="light-logo"
-				/>
+				<img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
@@ -258,41 +253,37 @@
 				<ul id="accordion-menu">
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-house"></span
-							><span class="mtext">Home</span>
+							<span class="micon bi bi-house"></span><span class="mtext">Home</span>
 						</a>
-						
+
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-textarea-resize"></span
-							><span class="mtext">Quản lí sản phẩm</span>
+							<span class="micon bi bi-textarea-resize"></span><span class="mtext">Quản lí sản phẩm</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="form-basic.html">Sản phẩm</a></li>
 							<li>
 								<a href="datatable.html">Danh sách sản phẩm</a>
 							</li>
-							
+
 						</ul>
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-table"></span
-							><span class="mtext">Danh mục sản phẩm</span>
+							<span class="micon bi bi-table"></span><span class="mtext">Danh mục sản phẩm</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="edit-category.html">Danh mục</a></li>
 							<li><a href="list-category.html">Danh sách danh mục</a></li>
 
-							
+
 						</ul>
 					</li>
 
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-archive"></span
-							><span class="mtext">Nhà sản xuất </span>
+							<span class="micon bi bi-archive"></span><span class="mtext">Nhà sản xuất </span>
 						</a>
 						<ul class="submenu">
 							<li><a href="edit-manu.html">Nhà sản xuất</a></li>
@@ -301,8 +292,7 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-command"></span
-							><span class="mtext">Nhân viên</span>
+							<span class="micon bi bi-command"></span><span class="mtext">Nhân viên</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="edit-user.html">Nhân viên</a></li>
@@ -311,8 +301,7 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-pie-chart"></span
-							><span class="mtext">Cửa Hàng</span>
+							<span class="micon bi bi-pie-chart"></span><span class="mtext">Cửa Hàng</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="edit-store.html">Danh sách cửa hàng</a></li>
@@ -321,22 +310,21 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon bi bi-file-earmark-text"></span
-							><span class="mtext">Đơn hàng </span>
+							<span class="micon bi bi-file-earmark-text"></span><span class="mtext">Đơn hàng </span>
 						</a>
 						<ul class="submenu">
 							<li><a href="video-player.html">Quản lí đơn hàng</a></li>
-							
+
 						</ul>
 					</li>
 
-					
+
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="mobile-menu-overlay"></div>
-	<main ng-app="category-app" ng-controller="category-ctrl" >
+	<main ng-app="category-app" ng-controller="category-ctrl">
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
@@ -344,315 +332,137 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12">
 								<div class="title">
-									<h4>Danh sách sản phẩm</h4>
+									<h4>Form</h4>
 								</div>
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
-										<li class="breadcrumb-item">
-											<a href="index.html">Home</a>
+										<li class="breadcrumb-item"><a th:href="@{/admin/index}">Home</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
-											Danh sách sản phẩm
-										</li>
+											Thông tin danh mục</li>
 									</ol>
 								</nav>
 							</div>
 
 						</div>
 					</div>
-					<!-- Simple Datatable start -->
-					<div class="card-box mb-30">
-						<div class="pd-20">
-							<h4 class="text-blue h4">Danh sách sản phẩm</h4>
+					<div class="tab page-header">
+						<ul class="nav nav-tabs">
+							<li class="nav-link"><a data-toggle="tab" data-target="#edit" href=""> Edition</a></li>
+							<li class="active nav-link"><a data-toggle="tab" data-target="#list" href="">List</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="edit" class="tab-pane fade">
+								<!-- Default Basic Forms Start -->
+								<div class="pd-20 card-box mb-30" id="model">
+									<div class="clearfix">
+										<div class="pull-left">
+											<h4 class="text-blue h4">Thông tin danh mục</h4>
 
-						</div>
-						<div class="pb-20">
-							<table class="data-table table stripe hover nowrap">
-								<thead>
-									<tr>
-										<th class="table-plus datatable-nosort">Tên</th>
-										<th>Giá</th>
-										<th>Loại sản phẩm</th>
-										<th>Hãng sản xuất</th>
-										<th>Ngày tạo</th>
-										<th class="datatable-nosort">Trạng thái</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="cate in pager.cates">
-										<td class="table-plus">{{cate.name}}</td>
-										<td>25</td>
-										<td>Gemini</td>
-										<td>2829 Trainer Avenue Peoria, IL 61602</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
+										</div>
+
+									</div>
+									<form>
+
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label">Tên</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.name" class="form-control" type="text"
+													placeholder="Acer A4p" />
 											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>20</td>
-										<td>Sagittarius</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label">Giá</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.Description" class="form-control"
+													placeholder="19.000.000" type="search" />
 											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>18</td>
-										<td>Gemini</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
+										</div>
+
+
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label"> Ngày
+												tạo</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.createDate" class="form-control date-picker"
+													placeholder="Select Date" type="text" />
 											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>30</td>
-										<td>Sagittarius</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
+										</div>
+
+									</form>
+									<div class="col-md-6 col-sm-12 mb-30">
+										<div class="pd-20 card-box height-100-p">
+											<div class="btn-list">
+
+
+												<button class="btn btn-success" type="submit"
+													ng-click="updateCate()">Cập nhập</button>
+												<button class="btn btn-danger" type="submit"
+													ng-click="deleteCate()">Xóa</button>
+												<button class="btn btn-info" type="submit" ng-click="reset()">
+													Làm mới</button>
+
 											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>30</td>
-										<td>Sagittarius</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>30</td>
-										<td>Gemini</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>30</td>
-										<td>Gemini</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="table-plus">Andrea J. Cagle</td>
-										<td>30</td>
-										<td>Gemini</td>
-										<td>1280 Prospect Valley Road Long Beach, CA 90802</td>
-										<td>29-03-2018</td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
-											</div>
-										</td>
-									</tr>
-									
-								
-									
-								
-								
-								</tbody>
-							</table>
+										</div>
+									</div>
+								</div>
+								<!-- Default Basic Forms End -->
+							</div>
+
+							<div id="list" class="tab-pane fade in active">
+								<div class="card-box mb-30">
+									<div class="pd-20">
+										<h4 class="text-blue h4">Danh sách sản phẩm</h4>
+
+									</div>
+									<div class="pb-20">
+										<table class="data-table table stripe hover nowrap">
+											<thead>
+												<tr>
+													<th class="table-plus datatable-nosort">Tên</th>
+													<th>Mô tả</th>
+													<th>Ngày tạo</th>
+													<th class="datatable-nosort">Trạng thái</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="cate in pager.cates">
+													<td class="table-plus">{{cate.name}}</td>
+													<td>2829 Trainer Avenue Peoria, IL 61602</td>
+													<td>29-03-2018</td>
+													<td>
+														<div class="dropdown">
+															<a class="btn btn-link font-24 p-0 line-height-1 no-arrow "
+																ng-click="deleteCate(cate)" role="button"> <i
+																	class="dw dw-delete-3"></i>
+															</a> <a
+																class="btn btn-link font-24 p-0 line-height-1 no-arrow "
+																ng-click="edit(cate)" role="button"> <i
+																	class="dw dw-edit2"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+							</div>
+
+
+
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</main>
 
-	
-		
-	
+
+
+
 	<script src="/assets/admin/product/product-ctrl.js"></script>
 	<script src="/assets/admin/product/category-ctrl.js"></script>
 	<script src="vendors/scripts/core.js"></script>

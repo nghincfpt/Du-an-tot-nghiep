@@ -48,7 +48,7 @@
 										Create Account?
 									</label>
 									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+										
 										<input class="input" type="password" name="password" placeholder="Enter Your Password">
 									</div>
 								</div>
@@ -59,13 +59,13 @@
 						<!-- Shiping Details -->
 						<div class="shiping-details">
 							<div class="section-title">
-								<h3 class="title">Shiping address</h3>
+								<h3 class="title">Giao tới địa chỉ khác</h3>
 							</div>
 							<div class="input-checkbox">
 								<input type="checkbox" id="shiping-address">
 								<label for="shiping-address">
 									<span></span>
-									Ship to a diffrent address?
+									Xác nhận giao tới địa chỉ khác?
 								</label>
 								<div class="caption">
 									<div class="form-group">
@@ -107,12 +107,12 @@
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
 						<div class="section-title text-center">
-							<h3 class="title">Your Order</h3>
+							<h3 class="title">Đơn hàng của bạn</h3>
 						</div>
 						<div class="order-summary">
 							<div class="order-col">
-								<div><strong>PRODUCT</strong></div>
-								<div><strong>TOTAL</strong></div>
+								<div><strong>Sản phẩm</strong></div>
+								<div><strong>Tổng tiền</strong></div>
 							</div>
 							<div class="order-products" th:each="detail:*{orderDetails}" th:object="${detail}">
 								<div class="order-col">
@@ -127,26 +127,26 @@
 								<input type="radio" name="payment" id="payment-1">
 								<label for="payment-1">
 									<span></span>
-									Direct Bank Transfer
+									Thanh toán trực tiếp
 								</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p>Sau khi nhận hàng vui lòng thanh toán lại cho Shipper xin cảm ơn.</p>
 								</div>
 							</div>
 							<div class="input-radio">
 								<input type="radio" name="payment" id="payment-2">
 								<label for="payment-2">
 									<span></span>
-									Cheque Payment
+									Thanh toán trực tuyến
 								</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p>Thanh toán trực tuyến qua ngân hàng</p>
 								</div>
 							</div>
 							
 						</div>
 						
-						<a ng-click="order.purchase()" class="primary-btn order-submit">Place order</a>
+						<a ng-click="order.purchase()" class="primary-btn order-submit">Xác nhận đặt hàng</a>
 					</div>
 					<!-- /Order Details -->
 				</div>

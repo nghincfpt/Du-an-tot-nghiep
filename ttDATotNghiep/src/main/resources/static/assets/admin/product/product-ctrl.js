@@ -37,11 +37,12 @@ angular
 				
 			};
 	}
+	
 	//hiển thị lên form
 	 // ràng buộc duwx liệu  =ng-model="form.name"
 	$scope.edit = function(item){
 		$scope.form=angular.copy(item);
-		  $(".main").main("show");
+		$(".nav-tabs a:eq(0)").tab('show')
 	}
 	// thêm sản phẩm mới
 	$scope.create =function(){

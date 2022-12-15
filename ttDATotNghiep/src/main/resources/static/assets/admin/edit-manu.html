@@ -378,7 +378,7 @@
 			</div>
 		</div>
 		<div class="mobile-menu-overlay"></div>
-	<main ng-app="category-app" ng-controller="category-ctrl" >
+<main ng-app="category-app" ng-controller="category-ctrl" >
 	<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
@@ -420,7 +420,7 @@
 									
 									class="form-control"
 									type="text"
-									placeholder="Acer A4p"
+									
 								/>
 							</div>
 						</div>
@@ -429,7 +429,7 @@
 							<div class="col-sm-12 col-md-10">
 								<input ng-model="form.logo"
 									class="form-control"
-									placeholder="19.000.000"
+								
 									type="search"
 								/>
 							</div>
@@ -437,20 +437,20 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Banner</label>
 							<div class="col-sm-12 col-md-10">
-								<input ng-model="form.Banner"
+								<input ng-model="form.banner"
 									class="form-control"
-									placeholder="19.000.000"
-									type="search"
+									
+									type="text"
 								/>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Ghi chú</label>
 							<div class="col-sm-12 col-md-10">
-								<input ng-model="form.Description"
+								<input ng-model="form.description"
 									class="form-control"
-									placeholder="19.000.000"
-									type="search"
+			
+									type="text"
 								/>
 							</div>
 						</div>
@@ -472,13 +472,13 @@
 						<div class="pd-20 card-box height-100-p">
 							<div class="btn-list">
 							
-								<button class="btn btn-primary" type="submit" ng-click="createManu()">
+								<button class="btn btn-primary" type="submit" ng-click="create()">
 									Thêm
 								</button>
-								<button class="btn btn-success" type="submit" ng-click="updateManu()">
+								<button class="btn btn-success" type="submit" ng-click="update()">
 									Cập nhập
 								</button>
-								<button class="btn btn-danger" type="submit" ng-click="deleteManu()">
+								<button class="btn btn-danger" type="submit" ng-click="delete()">
 									Xóa
 								</button>
 								<button class="btn btn-info" type="submit" ng-click="reset()">
@@ -490,11 +490,6 @@
 					</div>
 				</div>
 				<!-- Default Basic Forms End -->
-				
-
-
-
-		
 			</div>
 		</div>
 	</div>
@@ -507,7 +502,7 @@
 		<!-- js -->
 		<script src="/assets/admin/product/category-ctrl.js"></script>
 		<script src="/assets/admin/product/product-ctrl.js"></script>
-		<script src="/assets/admin/category/manufactures-ctrl.js"></script>
+		<script src="/assets/admin/product/manufactures-ctrl.js"></script>
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>

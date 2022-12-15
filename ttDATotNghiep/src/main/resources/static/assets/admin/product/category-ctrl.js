@@ -5,7 +5,7 @@ angular
 .controller("category-ctrl",function($scope,$http){
 	
 
-
+	$scope.Manus=[];
 	$scope.cates=[];
 	$scope.form={};
 	
@@ -24,7 +24,14 @@ angular
 		$scope.cates=resp.data;
 		
 	});
+		$http.get("/rest/manufacture").then(resp =>{
+		$scope.Manus=resp.data;
+		$scope.Manus.forEach(manu =>{
+			manu.createDate = new Date(manu.createDate) // chuyển dữ liệu ngày tháng về javascrip
+		})
+	});
 	}
+	
 	
 	// khởi đầu
 	$scope.initialize();
@@ -38,7 +45,11 @@ angular
 				
 			};
 	}
-		$scope.editcate = function(cate){
+	$scope.editmanu = function(manu){
+		$scope.form=angular.copy(manu);
+		$(".nav-tabs a:eq(0)").tab('show')
+	}
+	$scope.edit = function(cate){
 		$scope.form=angular.copy(cate);
 		$(".nav-tabs a:eq(0)").tab('show')
 	}
@@ -88,7 +99,51 @@ angular
 		
 	}
 	
-	
+	// thêm nha san xuat
+	$scope.create =function(){
+		var manu =angular.copy($scope.form);
+		$http.post(`/rest/manufacture`,manu).then(resp =>{
+			resp.data.createDate = new Date(resp.data.createDate)
+			$scope.cates.push(resp.data);
+			$scope.reset();
+			alert("Thêm mới nhà sản xuất thành công!")
+		}).catch(error =>{
+			alert("Lỗi thêm mới nhà sản xuất!");
+			console.log("Error",error);
+		});
+		
+	}
+	// cập nhap nha san xuat
+	$scope.update=function(){
+		var manu =angular.copy($scope.form);
+		$http.put(`/rest/manufacture/${manu.id}`,manu).then(resp =>{
+			var index =$scope.Manus.findIndex(c => c.id ==manu.id);
+			 
+			 $scope.Manus[index]=manu;
+			alert("cập nhật nhà sản xuất thành công!")
+		}).catch(error =>{
+			alert("cập nhật nhà sản xuất thất bại");
+			console.log("Error",error);
+		});
+		
+	}
+	// xóa nha san xuat
+	$scope.delete=function(manu){
+		//var item =angular.copy($scope.form);
+		console.log(manu);
+		console.log('----------');
+		$http.delete(`/rest/manufacture/${manu.id}`).then(resp =>{
+			var index =$scope.Manus.findIndex(p => p.id ==manu.id);
+			  // dùng SPICE để xóa sản phẩm
+			 $scope.Manus.splice(index,1);
+			$scope.reset();
+			alert("xóa nhà sản xuất thành công!")
+		}).catch(error =>{
+			alert("xóa nhà sản xuất thất bại");
+			console.log("Error",error);
+		});
+		
+	}
 	
 	$scope.pager={
 		page:0,

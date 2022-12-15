@@ -43,7 +43,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="shoping__cart__btns">
-							<a href="#" class="primary-btn cart-btn">Tiếp tục mua sắm</a> 
+							<a th:href="@{/product/list}" class="primary-btn cart-btn">Tiếp tục mua sắm</a> 
 						</div>
 					</div>
 					<div class="col-lg-6">
@@ -52,16 +52,15 @@
 								<h5>Mã giảm giá</h5>
 								<form action="#">
 									<input type="text" placeholder="Enter your coupon code">
-									<button type="submit" class="site-btn">Nhập mã giảm giá</button>
+									<button type="submit" class="site-btn">Xác nhận</button>
 								</form>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="shoping__checkout">
-							<h5>Check Out</h5>
-
-							<a th:href="@{/order/checkout}" class="primary-btn">Chuyển đến trang đặt hàng</a>
+				
+							<a th:href="@{/order/checkout}" class="primary-btn">Đặt hàng</a>
 						</div>
 					</div>
 				</div>

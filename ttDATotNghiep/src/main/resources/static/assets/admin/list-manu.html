@@ -336,7 +336,7 @@
 		</div>
 	</div>
 	<div class="mobile-menu-overlay"></div>
-	<main ng-app="product-app" ng-controller="product-ctrl" th:object="${itemp}">
+	<main ng-app="category-app" ng-controller="category-ctrl" >
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
@@ -360,58 +360,143 @@
 
 						</div>
 					</div>
-					<!-- Simple Datatable start -->
-					<div class="card-box mb-30">
-						<div class="pd-20">
-							<h4 class="text-blue h4">Danh sách sản phẩm</h4>
-
-						</div>
-						<div class="pb-20">
-							<table class="data-table table stripe hover nowrap">
-								<thead>
-									<tr>
-										<th class="table-plus datatable-nosort">Tên</th>
-										<th>Giá</th>
-										<th>Loại sản phẩm</th>
-										<th>Hãng sản xuất</th>
-										<th>Ngày tạo</th>
-										<th class="datatable-nosort">Trạng thái</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="item in pager.items">
-										<td class="table-plus">{{item.name}}</td>
-										<td>{{item.price}}</td>
-										<td>{{item.category.name}}</td>
-										<td>{{item.createDate |date :'dd-MM-yyyy'}}</td>
-										<td>{{item.available?'Yes':'No'}}</td>
-										<td>
-											<div class="dropdown">
-												<a class="btn btn-link font-24 p-0 line-height-1 no-arrow "
-													ng-click="delete(item)" role="button" >
-													<i class="dw dw-delete-3"></i>
-												</a>
-													<a class="btn btn-link font-24 p-0 line-height-1 no-arrow "
-													  ng-click="edit(item)" role="button" >
-													<i class="dw dw-edit2"></i>
-												</a>
+					<div class="tab page-header">
+						<ul class="nav nav-tabs">
+							<li class="nav-link"><a data-toggle="tab"
+								data-target="#edit" href=""> Edition</a></li>
+							<li class="active nav-link"><a data-toggle="tab"
+								data-target="#list" href="">List</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="edit" class="tab-pane fade">
+								<div class="pd-20 card-box mb-30" id="model">	
+									<div class="clearfix">
+										<div class="pull-left">
+											<h4 class="text-blue h4">Thông tin nhà sản xuất</h4>
+											
+										</div>
+										
+									</div>
+									<form>
+										
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label">Tên</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.name"
+													
+													class="form-control"
+													type="text"
+													
+												/>
 											</div>
-										</td>
-									</tr>
-									
-								
-									
-								
-								
-								</tbody>
-							</table>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label">Logo</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.logo"
+													class="form-control"
+												
+													type="search"
+												/>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label">Banner</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.banner"
+													class="form-control"
+													
+													type="text"
+												/>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label">Ghi chú</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.description"
+													class="form-control"
+							
+													type="text"
+												/>
+											</div>
+										</div>
+										
+				
+										<div class="form-group row">
+											<label class="col-sm-12 col-md-2 col-form-label"> Ngày tạo</label>
+											<div class="col-sm-12 col-md-10">
+												<input ng-model="form.createDay"
+													class="form-control date-picker"
+													placeholder="Select Date"
+													type="text"
+												/>
+											</div>
+										</div>
+										
+									</form>
+									<div class="col-md-6 col-sm-12 mb-30">
+										<div class="pd-20 card-box height-100-p">
+											<div class="btn-list">
+											
+												<button class="btn btn-success" type="submit" ng-click="update()">
+													Cập nhập
+												</button>
+												<button class="btn btn-danger" type="submit" ng-click="delete()">
+													Xóa
+												</button>
+												<button class="btn btn-info" type="submit" ng-click="reset()">
+													Làm mới
+												</button>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="list" class="tab-pane fade in active">
+								<div class="card-box mb-30">
+									<div class="pd-20">
+										<h4 class="text-blue h4">Danh sách sản phẩm</h4>
+
+									</div>
+									<div class="pb-20">
+										<table class="data-table table stripe hover nowrap">
+											<thead>
+												<tr>
+													<th class="table-plus datatable-nosort">Tên</th>
+													<th>Banner</th>
+													<th>Mô tả</th>
+													<th>Ngày tạo</th>
+													<th class="datatable-nosort">Trạng thái</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="manu in Manus">
+													<td class="table-plus">{{manu.name}}</td>
+													<td>{{manu.Banner}}</td>
+													<td>{{manu.Description}}</td>
+													<td>
+														<div class="dropdown">
+															<a
+																class="btn btn-link font-24 p-0 line-height-1 no-arrow "
+																ng-click="delete(manu)" role="button"> <i
+																class="dw dw-delete-3"></i>
+															</a> <a
+																class="btn btn-link font-24 p-0 line-height-1 no-arrow "
+																ng-click="edit(manu)" role="button"> <i
+																class="dw dw-edit2"></i>
+															</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-
-
-
-
-					<!-- Export Datatable End -->
 				</div>
 				
 			</div>
@@ -422,6 +507,7 @@
 		
 	<!-- welcome modal end -->
 	<!-- js -->
+	<script src="/assets/admin/product/category-ctrl.js"></script>
 	<script src="/assets/admin/product/product-ctrl.js"></script>
 	<script src="/assets/admin/vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/core.js"></script>
