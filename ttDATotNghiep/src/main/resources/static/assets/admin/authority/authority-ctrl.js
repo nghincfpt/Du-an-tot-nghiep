@@ -1,4 +1,8 @@
-app.controller("authority-ctrl", function($scope, $http, $location) {
+angular.module("authority-app", ["authority-app.controllers"]);
+ 
+angular 
+.module("authority-app.controllers", [])
+.controller("authority-ctrl", function($scope, $http, $location) {
 	$scope.roles=[];
 	$scope.admins=[];
 	$scope.authorities=[];

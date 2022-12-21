@@ -17,7 +17,6 @@ import poly.store.DAO.AuthorityDAO;
 import poly.store.entity.Account;
 import poly.store.entity.Authority;
 import poly.store.service.AuthorityService;
-
 @Service
 public class AuthorityServiceImpl implements AuthorityService {
 

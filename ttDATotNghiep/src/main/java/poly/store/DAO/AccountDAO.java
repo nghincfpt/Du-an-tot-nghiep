@@ -10,7 +10,7 @@ import poly.store.entity.Account;
 
 @Repository
 public interface AccountDAO  extends JpaRepository<Account, String>{
-  @Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('DIRE','STAF','CUST')")
+   @Query("SELECT DISTINCT ar.account FROM Authority ar WHERE ar.role.id IN ('DIRE','STAF')")
 	List<Account> getAdminisstrators();
 
 
