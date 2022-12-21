@@ -1,7 +1,9 @@
-angular.module("product-app", ["product-app.controllers"]);
+// khai báo một module có tên là "product-app" và có một module khác là "product-app.controllers" như một phụ thuộc.
+angular.module("product-app", ["product-app.controllers"]  );
  
 angular 
 .module("product-app.controllers", [])
+// khai báo một controller có tên là "product-ctrl"
 .controller("product-ctrl",function($scope,$http){
 	
 
@@ -9,6 +11,7 @@ angular
 	$scope.cates=[];
 	$scope.form={};
 	
+	// hàm khởi tạo, gọi API để load dữ liệu sản phẩm và danh mục sản phẩm
 	$scope.initialize=function(){
 	// load product
 	$http.get("/rest/products").then(resp =>{
@@ -23,6 +26,7 @@ angular
 		$scope.cates=resp.data;
 		
 	});
+
 	}
 	
 	// khởi đầu
@@ -43,6 +47,24 @@ angular
 	$scope.edit = function(item){
 		$scope.form=angular.copy(item);
 		$(".nav-tabs a:eq(0)").tab('show')
+	}
+	$scope.editOrder = function(order){
+		$scope.form=angular.copy(order);
+		$(".nav-tabs a:eq(0)").tab('show')
+	}
+	// cập nhap nha san xuat
+	$scope.updateOrder=function(){
+		var order =angular.copy($scope.form);
+		$http.put(`/rest/orders/${order.id}`,order).then(resp =>{
+			var index =$scope.orders.findIndex(c => c.id == order.id);
+			 
+			 $scope.orders[index]=order;
+			alert("cập nhật nhà sản xuất thành công!")
+		}).catch(error =>{
+			alert("cập nhật nhà sản xuất thất bại");
+			console.log("Error",error);
+		});
+		
 	}
 	// thêm sản phẩm mới
 	$scope.create =function(){

@@ -1,9 +1,9 @@
 package poly.store.rest.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
+
 
 import poly.store.entity.Manufacturer;
-import poly.store.entity.Product;
+
 import poly.store.service.Lmpl.ManufactureServiceImpl;
 
 
@@ -36,8 +36,7 @@ public class ManufactureRestController {
 	}
 	@GetMapping("/{id}")
 	public Manufacturer getOne(@PathVariable("id") Integer id) {
-		System.out.println(id);
-		System.out.println("-----------------");
+		
 		return ManufactureService.findById(id);
 	}
 	

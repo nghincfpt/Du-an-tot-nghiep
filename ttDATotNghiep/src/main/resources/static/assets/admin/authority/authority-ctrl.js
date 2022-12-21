@@ -2,7 +2,6 @@ app.controller("authority-ctrl", function($scope, $http, $location) {
 	$scope.roles=[];
 	$scope.admins=[];
 	$scope.authorities=[];
-	$scope.form={};
 
 $scope.initialize=function(){
 
@@ -11,13 +10,13 @@ $scope.initialize=function(){
 		$scope.roles = resp.data;
 	})
 
-	//load cust staffs and directors(administrators)
+	//load staffs and directors(administrators)
 	$http.get("/rest/accounts?admin=true").then(resp => {
 		$scope.admins = resp.data;
 	})
 
 
-	// các quyền load dữ liệu authorites of staff and directors
+	// các quyền load dữ liệu autjorites of staff and directors
 	$http.get("/rest/authorities?admin=true").then(resp => {
 		$scope.authorities = resp.data;
 	}).catch(error => {
@@ -62,26 +61,6 @@ $scope.initialize=function(){
 			alert("Thu hồi quyền sữ dụng thất bại");
 			console.log("Error",error);
 		})
-		
-	}
-	//hiển thị lên form
-	 // ràng buộc duwx liệu  =ng-model="form.name"
-	$scope.edit = function(item){
-		$scope.form=angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show')
-	}
-		// thêm tài khoản mới
-	$scope.create =function(){
-		var item =angular.copy($scope.form);
-		$http.post(`/rest/accounts`,item).then(resp =>{
-			resp.data.createDate = new Date(resp.data.createDate)
-			$scope.items.push(resp.data);
-			$scope.reset();
-			alert("Thêm mới tài khoản thành công!")
-		}).catch(error =>{
-			alert("Lỗi thêm mới sản phẩm!");
-			console.log("Error",error);
-		});
 		
 	}
 	$scope.pager={

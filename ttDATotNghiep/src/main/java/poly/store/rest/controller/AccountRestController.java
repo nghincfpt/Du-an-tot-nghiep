@@ -31,6 +31,5 @@ public class AccountRestController {
 		  return accountService.getAdminisstrators();
 	  }
 	  return accountService.findAll();
-  }
-	
+  }	
 }

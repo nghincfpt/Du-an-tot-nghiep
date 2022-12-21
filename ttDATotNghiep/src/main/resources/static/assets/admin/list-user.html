@@ -65,7 +65,7 @@
 <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body >
 
 
 	<div class="header">
@@ -320,7 +320,7 @@
 								hàng </span>
 					</a>
 						<ul class="submenu">
-							<li><a href="adminorder/list">Quản lí đơn hàng</a></li>
+							<li><a href="video-player.html">Quản lí đơn hàng</a></li>
 
 						</ul></li>
 
@@ -330,7 +330,7 @@
 		</div>
 	</div>
 	<div class="mobile-menu-overlay"></div>
-	<main ng-app="product-app" ng-controller="product-ctrl">
+	<main ng-controller="authority-ctrl" ng-app="authority-app">
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
@@ -338,255 +338,49 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12">
 								<div class="title">
-									<h4>Danh sách sản phẩm</h4>
+									<h4>Quản lí đơn hàng</h4>
 								</div>
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item"><a href="index.html">Home</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
-											Danh sách sản phẩm</li>
+											Quản lí đơn hàng</li>
 									</ol>
 								</nav>
 							</div>
-
 						</div>
 					</div>
 					<div class="tab page-header">
-						<ul class="nav nav-tabs">
-							<li class="nav-link"><a data-toggle="tab"
-								data-target="#edit" href=""> Edition</a></li>
-							<li class="active nav-link"><a data-toggle="tab"
-								data-target="#list" href="">List</a></li>
-						</ul>
-						<div class="tab-content">
-							<div id="edit" class="tab-pane fade">
-								<div class="pd-20 card-box mb-30" id="model">
-									<div class="clearfix">
-										<div class="pull-left">
-											<h4 class="text-blue h4">Thông tin sản phẩm</h4>
-
-										</div>
-
-									</div>
-									<form>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Tên</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.name" class="form-control" type="text"
-													placeholder="Acer A4p" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Giá</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.price" class="form-control"
-													placeholder="19.000.000" type="search" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Kích
-												thước</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.weight" class="form-control"
-													value="Dài 255mm" type="text" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Nơi
-												sản xuất</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.origin" class="form-control"
-													value="Việt nam" type="text" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Màn
-												hình</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.screen" class="form-control"
-													value="11.6 HD (1366 x 768)" type="text" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Khối
-												lượng</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.graphics" class="form-control"
-													value=" Nặng 1.4 kg" type="text" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Ổ
-												cứng</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.hard" class="form-control" type="text"
-													placeholder="128 GB SSD M2 PCIe" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Màu
-												sắc</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.color" class="form-control"
-													type="text" placeholder="Đen" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">RAM</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.ram" class="form-control" type="text"
-													placeholder="4 GBDDR4 (1 khe)Từ 2400 MHz (Hãng công bố)" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Thời
-												điểm ra mắt</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.year" class="form-control" type="text"
-													placeholder="2021" />
-											</div>
-										</div>
-
-
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">
-												Ngày tạo</label>
-											<div class="col-sm-12 col-md-10">
-												<input ng-model="form.createDate"
-													class="form-control date-picker" placeholder="Select Date"
-													type="text" />
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Loại
-												sản phẩm</label>
-											<div class="col-sm-12 col-md-10">
-												<select ng-model="form.category.id" class="form-control">
-													<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group">
-											<label>Image 1</label>
-											<div class="custom-file">
-												<input type="file" class="custom-file-input"> <label
-													class="custom-file-label">Choose file</label>
-											</div>
-										</div>
-										<div class="form-group">
-											<label>Image 2</label>
-											<div class="custom-file">
-												<input type="file" class="custom-file-input"> <label
-													class="custom-file-label">Choose file</label>
-											</div>
-										</div>
-										<div class="form-group">
-											<label>Image 3</label>
-											<div class="custom-file">
-												<input type="file" class="custom-file-input"> <label
-													class="custom-file-label">Choose file</label>
-											</div>
-										</div>
-										<div class="form-group">
-											<label>Image 4</label>
-											<div class="custom-file">
-												<input type="file" class="custom-file-input"> <label
-													class="custom-file-label">Choose file</label>
-											</div>
-										</div>
-
-									</form>
-									<div class="col-md-6 col-sm-12">
-										<label class="weight-600">Trạng thái</label>
-										<div class="custom-control custom-radio mb-5"
-											ng-model="form.available" ng-value="true">
-											<input type="radio" id="customRadio4" name="customRadio"
-												class="custom-control-input"> <label
-												class="custom-control-label" for="customRadio4">Còn
-												hàng</label>
-										</div>
-										<div class="custom-control custom-radio mb-5"
-											ng-model="form.available" ng-value="false">
-											<input type="radio" id="customRadio5" name="customRadio"
-												class="custom-control-input"> <label
-												class="custom-control-label" for="customRadio5">Hết
-												hàng</label>
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-12 mb-30">
-										<div class="pd-20 card-box height-100-p">
-											<div class="btn-list">
-
-												<button class="btn btn-success" type="submit"
-													ng-click="update()">Cập nhập</button>
-												<button class="btn btn-danger" type="submit"
-													ng-click="delete(form)">Xóa</button>
-												<button class="btn btn-info" type="submit"
-													ng-click="reset()">Làm mới</button>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div id="list" class="tab-pane fade in active">
-								<div class="card-box mb-30">
-									<div class="pd-20">
-										<h4 class="text-blue h4">Danh sách sản phẩm</h4>
-
-									</div>
-									<div class="pb-20">
-										<table class="data-table table stripe hover nowrap">
-											<thead>
-												<tr>
-													<th class="table-plus datatable-nosort">Tên</th>
-													<th>Giá</th>
-													<th>Loại sản phẩm</th>
-													<th>Hãng sản xuất</th>
-													<th>Ngày tạo</th>
-													<th class="datatable-nosort">Trạng thái</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr ng-repeat="item in pager.items">
-													<td class="table-plus">{{item.name}}</td>
-													<td>{{item.price}}</td>
-													<td>{{item.category.name}}</td>
-													<td>{{item.createDate |date :'dd-MM-yyyy'}}</td>
-													<td>{{item.available?'Yes':'No'}}</td>
-													<td>
-														<div class="dropdown">
-															<a
-																class="btn btn-link font-24 p-0 line-height-1 no-arrow "
-																ng-click="delete(item)" role="button"> <i
-																class="dw dw-delete-3"></i>
-															</a> <a
-																class="btn btn-link font-24 p-0 line-height-1 no-arrow "
-																ng-click="edit(item)" role="button"> <i
-																class="dw dw-edit2"></i>
-															</a>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">AUTHORIZING</div>
+							<table class="table table-border">
+								<thead class="bg-success" style="font-variant: small-caps">
+									<tr>
+										<th></th>
+										<th ng-repeat="role in roles" class="text-center">{{role.name}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="acc in admins">
+										<td>{{acc.fullname}}</td>
+										<th ng-repeat="role in roles" class="text-center"><input
+											ng-checked="authority_of(acc,role)"
+											ng-click="authority_changed(acc,role)" type="checkbox">
+										</th>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
-
-				</div>
-			</div>
 	</main>
 
 
 
 	<!-- welcome modal end -->
 	<!-- js -->
-	<script src="/assets/admin/product/product-ctrl.js"></script>
+	<script src="/assets/admin/authority-ctrl.js"></script>
+	<script src="/assets/admin/product/order-crtl.js"></script>
 	<script src="/assets/admin/vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/script.min.js"></script>

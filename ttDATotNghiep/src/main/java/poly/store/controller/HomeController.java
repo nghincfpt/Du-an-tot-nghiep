@@ -15,8 +15,9 @@ public String admin() {
 	return "redirect:/assets/admin/index.html";
 }
 
-@RequestMapping({"/admin","/admin/product/list"})
-public String adminProduct() {
-	return "redirect:/assets/admin/productlist.html";
+
+@RequestMapping({"/security/profile"})
+public String adminProfile() {
+	return "security/profile";
 }
 }

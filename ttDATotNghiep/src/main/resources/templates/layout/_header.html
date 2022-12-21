@@ -1,4 +1,3 @@
-
 <div xmlns:th="http://www.thymeleaf.org">
 
 	<header>
@@ -23,11 +22,15 @@
 							th:if="${#request.isUserInRole('DIRE')or #request.isUserInRole('STAF')}">
 							<a th:href="@{/admin/index}"> <i
 								class="glyphicon glyphicon-user"></i>Quản lý
-						</a> 
-						
-						
-					 					
+						</a> 				
 					</th:block>
+				</ul>
+				<ul class="header-links pull-right">
+					<th:block th:if="${#request.remoteUser}">
+					<li>	<a th:href="@{/security/profile}"> <i
+						class="glyphicon glyphicon-user"></i> Wellcome [[${#request.remoteUser}]]
+					</a></li>
+				</th:block>
 				</ul>
 				<th:block th:unless="${#request.remoteUser}">
 					<ul class="header-links pull-right">

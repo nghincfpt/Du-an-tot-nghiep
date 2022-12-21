@@ -17,6 +17,7 @@ import poly.store.DAO.OrderDAO;
 import poly.store.DAO.OrderDetailDAO;
 import poly.store.entity.Order;
 import poly.store.entity.OrderDetail;
+import poly.store.entity.Product;
 import poly.store.service.OrderService;
 
 @Service
@@ -43,7 +44,12 @@ public class OrderServiceImpl implements OrderService {
 
 		return order;
 	}
-
+	
+	@Override
+	public List<Order> findAll() {
+	
+		return dao.findAll();
+	}
 	@Override
 	public Order findById(Long id) {
 
@@ -65,5 +71,17 @@ public class OrderServiceImpl implements OrderService {
 	 public List<Order> listAll(){
 		   return dao.findAll(Sort.by("Address").ascending());
 	   }
+
+	@Override
+	public void delete(Long id) {
+		 dao.deleteById(id);
+		
+	}
+
+	@Override
+	public Order update(Order order) {
+		// TODO Auto-generated method stub
+		return dao.save(order);
+	}
 		
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import poly.store.entity.Account;
 import poly.store.entity.Order;
+import poly.store.model.OrderModel;
 
 //@Repository
 public interface OrderDAO  extends JpaRepository<Order, Long>{
@@ -23,6 +24,9 @@ public interface OrderDAO  extends JpaRepository<Order, Long>{
 			nativeQuery = true)
 		List<Order> listAll(String name);
 	
+	@Query("SELECT o FROM Order o WHERE o.id = ?1")
+	List<Order> getOrderByName(Long id);
 	
+
 
 }

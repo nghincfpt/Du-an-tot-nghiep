@@ -35,17 +35,17 @@ public class Order implements Serializable {
 	Date createDate = new Date();
 	String district;
 	String status;
-	String  address;
-	String   email;
+	String address;
+	String  email;
 	String  province;
 	String sdt;
 	String wards;
 	String pay;
 	
-	
-//	@OneToOne
-//	@JoinColumn(name = "ID")
-//	Status status;
+	@ManyToOne
+	@JoinColumn(name = "statusid")
+	Status statusid;
+
 	
 	
 	@ManyToOne

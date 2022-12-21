@@ -63,12 +63,14 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 	}
 	}
 	$scope.cart.loadFromLocalStorage();
-	
+
+	  
 	 //  form đặt hàng
 	$scope.order={
 		createDate: new Date(),
-		status:"",
 		address:"",
+		sdt: "",
+		
 		account:{username:$("#username").text()},
 	   get	orderDetails(){
 			return $scope.cart.items.map(item =>{
@@ -81,6 +83,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 		},
 		purchase(){
 			var order =angular.copy(this);
+			
 			// thực hiện đặt hàng
 			console.log(order);
 			$http.post("/rest/orders",order).then(resp => {

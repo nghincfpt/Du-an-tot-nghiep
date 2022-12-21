@@ -25,7 +25,7 @@ import poly.store.service.ProductService;
 
 @Controller
 
-public class OrderController {
+public class OrderAdminController {
 
 
 	@Autowired
@@ -34,22 +34,22 @@ public class OrderController {
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping("/order/checkout")
+	@RequestMapping("/adminorder/checkout")
 	public String checkout() {
-		return "order/checkout";
+		return "adminorder/checkout";
 	}
-	@RequestMapping("/order/list")
+	@RequestMapping("/adminorder/list")
 	public String list(Model model,HttpServletRequest request) {
 		String username = request.getRemoteUser();
-	//	model.addAttribute("orders",orderService.findByIdUsername(username));
-		model.addAttribute("orders",orderService.findByIdUsername(username));
-		return "order/list";
+	
+		model.addAttribute("orders",orderService.findAllUsername(username));
+		return "adminorder/list";
 	}
 
 	
-	@RequestMapping("/order/detail/{id}")
+	@RequestMapping("/adminorder/detail/{id}")
 	public String detail(@PathVariable("id")Long id,Model model) {
 		model.addAttribute("order",orderService.findById(id));
-		return "order/detail";
+		return "adminorder/detail";
 	}
 }
